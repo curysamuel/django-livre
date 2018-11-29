@@ -1,4 +1,4 @@
-"""django_livre URL Configuration
+"""my_proj URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.views.generic.base import TemplateView
+from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('events/', include('events.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]

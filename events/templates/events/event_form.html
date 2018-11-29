@@ -1,0 +1,11 @@
+<h1>Event Edit</h1>
+<a href="{% url 'event_list' %}">
+    <button>Back</button>
+</a>
+<a href="{% url 'logout' %}">
+    <button>Logout</button>
+</a>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>

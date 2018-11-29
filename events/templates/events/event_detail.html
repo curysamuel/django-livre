@@ -1,0 +1,9 @@
+<a href="{% url 'event_list' %}">
+    <button>Back</button>
+</a>
+<a href="{% url 'logout' %}">
+    <button>Logout</button>
+</a>
+<h1>Event Details</h1>
+<h2>Nome: {{object.name}}</h2>
+participantes: {{ object.participantes }}
