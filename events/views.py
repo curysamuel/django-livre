@@ -1,14 +1,11 @@
-# from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from events.models import Event
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-@method_decorator(login_required, name='dispatch')
-class EventList(ListView):
+class EventList(LoginRequiredMixin, ListView):
     model = Event
     template_name = 'event_list.html'
 
@@ -17,14 +14,12 @@ class EventList(ListView):
         return queryset
 
 
-@method_decorator(login_required, name='dispatch')
-class EventView(DetailView):
+class EventView(LoginRequiredMixin, DetailView):
     template_name = 'event_detail.html'
     model = Event
 
 
-@method_decorator(login_required, name='dispatch')
-class EventCreate(CreateView):
+class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
     fields = ['name', 'participantes']
     success_url = reverse_lazy('event_list')
@@ -37,16 +32,14 @@ class EventCreate(CreateView):
         return super().form_valid(form)
 
 
-@method_decorator(login_required, name='dispatch')
-class EventUpdate(UpdateView):
+class EventUpdate(LoginRequiredMixin, UpdateView):
     model = Event
     fields = ['name', 'participantes', 'author']
     success_url = reverse_lazy('event_list')
     template_name = 'event_form.html'
 
 
-@method_decorator(login_required, name='dispatch')
-class EventDelete(DeleteView):
+class EventDelete(LoginRequiredMixin, DeleteView):
     model = Event
     success_url = reverse_lazy('event_list')
     template_name = 'event_confirm_delete.html'
