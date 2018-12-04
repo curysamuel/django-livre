@@ -24,8 +24,13 @@ class EventView(DetailView):
 @method_decorator(login_required, name='dispatch')
 class EventCreate(CreateView):
     model = Event
-    fields = ['name', 'participantes', 'author']
+    fields = ['name', 'participantes']
     success_url = reverse_lazy('event_list')
+    def form_valid(self, form):
+        evento = form.save(commit=False)
+        evento.author = self.request.user
+        evento.save()
+        return super().form_valid(form)
 
 
 @method_decorator(login_required, name='dispatch')
