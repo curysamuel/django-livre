@@ -1,8 +1,14 @@
-<h1>Event Delete</h1>
-<a href="{% url 'event_list' %}">
-    <button>Back</button>
-</a>
-<form method="post">{% csrf_token %}
-    Are you sure you want to delete "{{ object }}" ?
-    <input type="submit" value="Submit" />
-</form>
+{% extends 'base.html' %}
+
+{% block title %}Delete{% endblock %}
+
+{% block content %}
+	<h1>Event Delete</h1>
+	<a href="{% url 'event_list' %}">
+	    <button>Back</button>
+	</a>
+	<form method="post">{% csrf_token %}
+	    Are you sure you want to delete "{{ object }}" ?
+	    <input type="submit" value="Submit" />
+	</form>
+{% endblock %}

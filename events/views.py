@@ -24,14 +24,14 @@ class EventView(DetailView):
 @method_decorator(login_required, name='dispatch')
 class EventCreate(CreateView):
     model = Event
-    fields = ['name', 'pages', 'author']
+    fields = ['name', 'participantes', 'author']
     success_url = reverse_lazy('event_list')
 
 
 @method_decorator(login_required, name='dispatch')
 class EventUpdate(UpdateView):
     model = Event
-    fields = ['name', 'pages', 'author']
+    fields = ['name', 'participantes', 'author']
     success_url = reverse_lazy('event_list')
 
 
