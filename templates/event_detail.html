@@ -7,10 +7,10 @@
 	    <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
 	</head>
 	<a href="{% url 'event_list' %}">
-	    <button>Back</button>
+	    <button type="button" class="btn btn-primary">Voltar</button>
 	</a>
 	<a href="{% url 'logout' %}">
-	    <button>Logout</button>
+	    <button type="button" class="btn btn-primary">Logout</button>
 	</a>
 	<h1>Event Details</h1>
 	<h2>Nome: {{object.name}}</h2>

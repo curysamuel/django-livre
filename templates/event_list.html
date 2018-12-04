@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
+{% load cache %}
 
 {% block title %}List{% endblock %}
-
+{% cache 500 content %}
 {% block content %}
-    <a href="{% url 'logout' %}">
-        <button>Logout</button>
-    </a>
     <h1>Events</h1>
     <table class="table table-hover">
     <thead>
@@ -29,7 +27,11 @@
         {% endfor %}
     </tbody>
     </table>
-    <a href="{% url "event_new" %}">New</a>
-
-    <p><a href="{% url 'logout' %}">logout</a></p>
+    <a href="{% url 'event_new' %}">
+        <button type="button" class="btn btn-primary">Novo</button>
+    </a>
+    <a href="{% url 'logout' %}">
+        <button type="button" class="btn btn-primary">Logout</button>
+    </a>
 {% endblock %}
+{% endcache %}

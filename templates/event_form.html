@@ -8,10 +8,10 @@
 	</head>
 	<h1>Event Edit</h1>
 	<a href="{% url 'event_list' %}">
-	    <button>Back</button>
+	    <button type="button" class="btn btn-primary">Voltar</button>
 	</a>
 	<a href="{% url 'logout' %}">
-	    <button>Logout</button>
+	    <button type="button" class="btn btn-primary">Logout</button>
 	</a>
 	<form method="post">{% csrf_token %}
 	    {{ form.as_p }}
