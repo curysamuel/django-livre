@@ -141,5 +141,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 LOGIN_REDIRECT_URL = 'event_list'
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'logout'
 STATIC_URL = '/static/'

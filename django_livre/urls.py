@@ -17,9 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import TemplateView
 from django.urls import include
+from events import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('events/', include('events.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('logout', TemplateView.as_view(template_name='logout.html'), name='logout'),
+    path('new', views.EventCreate.as_view(), name='event_new'),
+    path('view/<int:pk>', views.EventView.as_view(), name='event_view'),
+    path('edit/<int:pk>', views.EventUpdate.as_view(), name='event_edit'),
+    path('delete/<int:pk>', views.EventDelete.as_view(), name='event_delete'),
+    path('', views.EventList.as_view(), name='event_list'),
+
 ]
