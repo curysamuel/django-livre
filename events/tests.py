@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.urls import reverse
 from events import models
 from django.test import Client
-# import json
+import json
 
 
 class EventTest(TestCase):
@@ -17,5 +17,17 @@ class EventTest(TestCase):
         self.client.login(username='joe', password='sam12345')
         response = self.client.get(reverse('event_list'))
         self.assertEqual(response.status_code, 200)
-        # response = self.client.post(reverse(check_item), json.dumps({}), content_type='application/json')
+
+    def test_create_view(self):
+        self.client.login(username='joe', password='sam12345')
+        dic = {
+            'name': 'Lollapalooza',
+            'participantes': 10000,
+            'author': self.user.pk
+        }
+        response = self.client.post(reverse('event_new'), json.dumps(dic), content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.template_name[0], 'event_form.html')
+        
+
         
