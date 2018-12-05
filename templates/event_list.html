@@ -10,9 +10,9 @@
         <tr>
          <th scope="col">Nome</th>
          <th scope="col">Participantes</th>
-         <th scope="col">View</th>
-         <th scope="col">Edit</th>
-         <th scope="col">Delete</th>
+         <th scope="col">Panorama</th>
+         <th scope="col">Editar</th>
+         <th scope="col">Deletar</th>
         </tr>
     </thead>
     <tbody>
@@ -20,9 +20,9 @@
         <tr>
         <td>{{ event.name }}</td>
         <td>{{ event.participantes }}</td>
-        <td><a href="{% url "event_view" event.id %}">view</a></td>
-        <td><a href="{% url "event_edit" event.id %}">edit</a></td>
-        <td><a href="{% url "event_delete" event.id %}">delete</a></td>
+        <td><a href="{% url "event_view" event.id %}">Panorama</a></td>
+        <td><a href="{% url "event_edit" event.id %}">Editar</a></td>
+        <td><a href="{% url "event_delete" event.id %}">Deletar</a></td>
         </tr>
         {% endfor %}
     </tbody>
@@ -31,7 +31,7 @@
         <button type="button" class="btn btn-primary">Novo</button>
     </a>
     <a href="{% url 'logout' %}">
-        <button type="button" class="btn btn-primary">Logout</button>
+        <button type="button" class="btn btn-primary">Sair</button>
     </a>
 {% endblock %}
 {% endcache %}

@@ -3,12 +3,12 @@
 {% block title %}Delete{% endblock %}
 
 {% block content %}
-	<h1>Event Delete</h1>
+	<h1>Deletar Evento</h1>
 	<a href="{% url 'event_list' %}">
 	    <button type="button" class="btn btn-primary">Voltar</button>
 	</a>
 	<form method="post">{% csrf_token %}
-	    Are you sure you want to delete "{{ object }}" ?
+	    Você tem certeza que deseja deletar "{{ object }}" ?
 	    <input type="submit" value="Submit" />
 	</form>
 {% endblock %}

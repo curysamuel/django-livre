@@ -10,9 +10,10 @@
         <tr>
          <th scope="col">Nome</th>
          <th scope="col">Estilo</th>
-         <th scope="col">View</th>
-         <th scope="col">Edit</th>
-         <th scope="col">Delete</th>
+         <!-- <th scope="col">View</th> -->
+         <th scope="col">Panorama</th>
+         <th scope="col">Editar</th>
+         <th scope="col">Deletar</th>
         </tr>
     </thead>
     <tbody>
@@ -20,9 +21,9 @@
         <tr>
         <td>{{ band.name }}</td>
         <td>{{ band.estilo }}</td>
-        <td><a href="{% url "band_view" band.id %}">view</a></td>
-        <td><a href="{% url "band_edit" band.id %}">edit</a></td>
-        <td><a href="{% url "band_delete" band.id %}">delete</a></td>
+        <td><a href="{% url "band_view" band.id %}">Panorama</a></td>
+        <td><a href="{% url "band_edit" band.id %}">Editar</a></td>
+        <td><a href="{% url "band_delete" band.id %}">Deletar</a></td>
         </tr>
         {% endfor %}
     </tbody>
@@ -31,7 +32,7 @@
         <button type="button" class="btn btn-primary">Novo</button>
     </a>
     <a href="{% url 'logout' %}">
-        <button type="button" class="btn btn-primary">Logout</button>
+        <button type="button" class="btn btn-primary">Sair</button>
     </a>
 {% endblock %}
 {% endcache %}
