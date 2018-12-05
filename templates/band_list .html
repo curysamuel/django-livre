@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load cache %}
+
+{% block title %}Band List{% endblock %}
+{% cache 500 content %}
+{% block content %}
+    <h1>Band</h1>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+         <th scope="col">Nome</th>
+         <th scope="col">Estilo</th>
+         <th scope="col">View</th>
+         <th scope="col">Edit</th>
+         <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for band in object_list %}
+        <tr>
+        <td>{{ band.name }}</td>
+        <td>{{ band.estilo }}</td>
+        <td><a href="{% url "band_view" band.id %}">view</a></td>
+        <td><a href="{% url "band_edit" band.id %}">edit</a></td>
+        <td><a href="{% url "band_delete" band.id %}">delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <a href="{% url 'band_new' %}">
+        <button type="button" class="btn btn-primary">Novo</button>
+    </a>
+    <a href="{% url 'logout' %}">
+        <button type="button" class="btn btn-primary">Logout</button>
+    </a>
+{% endblock %}
+{% endcache %}

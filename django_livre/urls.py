@@ -28,4 +28,10 @@ urlpatterns = [
     path('edit/<int:pk>', views.EventUpdate.as_view(), name='event_edit'),
     path('delete/<int:pk>', views.EventDelete.as_view(), name='event_delete'),
     path('', views.EventList.as_view(), name='event_list'),
+    path('band_new', views.BandCreate.as_view(), name='band_new'),
+    path('band_view/<int:pk>', views.BandView.as_view(), name='band_view'),
+    path('band_edit/<int:pk>', views.BandUpdate.as_view(), name='band_edit'),
+    path('band_delete/<int:pk>', views.BandDelete.as_view(), name='band_delete'),
+    path('bands', views.BandList.as_view(), name='band_list')
+
 ]

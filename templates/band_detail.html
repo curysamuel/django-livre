@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Band Detalhe{% endblock %}
+
+{% block content %}
+	<head>
+	    <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
+	</head>
+	<a href="{% url 'band_list' %}">
+	    <button type="button" class="btn btn-primary">Voltar</button>
+	</a>
+	<a href="{% url 'logout' %}">
+	    <button type="button" class="btn btn-primary">Logout</button>
+	</a>
+	<h1>Band Details</h1>
+	<h2>Nome: {{object.name}}</h2>
+	Estilo: {{ object.estilo }}
+{% endblock %}
