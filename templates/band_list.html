@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load cache %}
 
-{% block title %}Band List{% endblock %}
+{% block title %}Bandas{% endblock %}
 {% cache 500 content %}
 {% block content %}
     <h1>Band</h1>
@@ -10,7 +10,7 @@
         <tr>
          <th scope="col">Nome</th>
          <th scope="col">Estilo</th>
-         <th scope="col">Panorama</th>
+         <th scope="col">Detalhes</th>
          <th scope="col">Editar</th>
          <th scope="col">Deletar</th>
         </tr>
@@ -19,8 +19,8 @@
         {% for band in object_list %}
         <tr>
         <td>{{ band.name }}</td>
-        <td>{{ band.participantes }}</td>
-        <td><a href="{% url "band_view" band.id %}">Panorama</a></td>
+        <td>{{ band.estilo }}</td>
+        <td><a href="{% url "band_view" band.id %}">Detalhes</a></td>
         <td><a href="{% url "band_edit" band.id %}">Editar</a></td>
         <td><a href="{% url "band_delete" band.id %}">Deletar</a></td>
         </tr>

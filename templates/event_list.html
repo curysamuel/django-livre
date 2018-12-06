@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load cache %}
 
-{% block title %}List{% endblock %}
+{% block title %}Eventos{% endblock %}
 {% cache 500 content %}
 {% block content %}
     <h1>Events</h1>
@@ -10,7 +10,7 @@
         <tr>
          <th scope="col">Nome</th>
          <th scope="col">Participantes</th>
-         <th scope="col">Panorama</th>
+         <th scope="col">Detalhes</th>
          <th scope="col">Editar</th>
          <th scope="col">Deletar</th>
         </tr>
@@ -20,7 +20,7 @@
         <tr>
         <td>{{ event.name }}</td>
         <td>{{ event.participantes }}</td>
-        <td><a href="{% url "event_view" event.id %}">Panorama</a></td>
+        <td><a href="{% url "event_view" event.id %}">Detalhes</a></td>
         <td><a href="{% url "event_edit" event.id %}">Editar</a></td>
         <td><a href="{% url "event_delete" event.id %}">Deletar</a></td>
         </tr>

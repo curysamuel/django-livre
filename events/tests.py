@@ -17,6 +17,7 @@ class EventTest(TestCase):
         self.client.login(username='joe', password='sam12345')
         response = self.client.get(reverse('event_list'))
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.template_name[0], 'event_list.html')
 
     def test_create_view(self):
         self.client.login(username='joe', password='sam12345')
@@ -28,6 +29,21 @@ class EventTest(TestCase):
         response = self.client.post(reverse('event_new'), json.dumps(dic), content_type='application/json')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.template_name[0], 'event_form.html')
-        
 
-        
+    def test_edit_view(self):
+        self.client.login(username='joe', password='sam12345')
+        response = self.client.get(reverse('event_edit', args=[self.evento.pk]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.template_name[0], 'event_form.html')
+
+    def test_detail_view(self):
+        self.client.login(username='joe', password='sam12345')
+        response = self.client.get(reverse('event_view', args=[self.evento.pk]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.template_name[0], 'event_detail.html')
+
+    def test_delete_view(self):
+        self.client.login(username='joe', password='sam12345')
+        response = self.client.get(reverse('event_delete', args=[self.evento.pk]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.template_name[0], 'event_confirm_delete.html')

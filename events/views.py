@@ -3,8 +3,33 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from events.models import Event, Band
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.base import TemplateResponseMixin
+from django.http import JsonResponse
 
+class AjaxableResponseMixin:
+    """
+    Mixin to add AJAX support to a form.
+    Must be used with an object-based FormView (e.g. CreateView)
+    """
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        if self.request.is_ajax():
+            return JsonResponse(form.errors, status=400)
+        else:
+            return response
 
+    def form_valid(self, form):
+        # We make sure to call the parent's form_valid() method because
+        # it might do some processing (in the case of CreateView, it will
+        # call form.save() for example).
+        response = super().form_valid(form)
+        if self.request.is_ajax():
+            data = {
+                'pk': self.object.pk,
+            }
+            return JsonResponse(data)
+        else:
+            return response
 class EventList(LoginRequiredMixin, ListView):
     model = Event
     template_name = 'event_list.html'
@@ -21,7 +46,7 @@ class EventView(LoginRequiredMixin, DetailView):
 
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
-    fields = ['name', 'participantes']
+    fields = ['name', 'participantes', 'band']
     success_url = reverse_lazy('event_list')
     template_name = 'event_form.html'
 
@@ -34,7 +59,7 @@ class EventCreate(LoginRequiredMixin, CreateView):
 
 class EventUpdate(LoginRequiredMixin, UpdateView):
     model = Event
-    fields = ['name', 'participantes', 'author']
+    fields = ['name', 'participantes', 'author', 'band']
     success_url = reverse_lazy('event_list')
     template_name = 'event_form.html'
 
@@ -59,7 +84,7 @@ class BandView(LoginRequiredMixin, DetailView):
     model = Band
 
 
-class BandCreate(LoginRequiredMixin, CreateView):
+class BandCreate(LoginRequiredMixin, AjaxableResponseMixin, CreateView):
     model = Band
     fields = ['name', 'estilo']
     success_url = reverse_lazy('band_list')

@@ -17,7 +17,8 @@ Entrega e Apresentação
 
 A entrega deve ser no dia 05/12 e a apresentação dia 06/12
 
-ok Você deverá criar um ambiente virtual e gerar o arquivo requirements.txt com todas as dependencias do projeto. Use o Bitbucket para criar um repositório, e use pipeline testando por meio do teste unitário criado. Assim, sempre que alguém de commit na aplicação, os testes serão executados e vocês serão informados se, depois de algum commit, sua aplicação parou de funcionar <3.
+ok Você deverá criar um ambiente virtual e gerar o arquivo requirements.txt com todas as dependencias do projeto. Use o Bitbucket para criar um repositório, e use pipeline testando por meio do teste unitário criado. Assim, sempre que alguém de
+commit na aplicação, os testes serão executados e vocês serão informados se, depois de algum commit, sua aplicação parou de funcionar <3.
 
 Crie um repositório público no bitbucket. Entregue o link deste repositório. Crie um readme.md com (a) os integrantes do grupo (máximo 3); (b) instruções para implantação do sistema para o prof poder executá-lo.
 """

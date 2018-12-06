@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Detalhe{% endblock %}
+{% block title %}Detalhes Evento{% endblock %}
 
 {% block content %}
 	<head>
@@ -13,6 +13,9 @@
 	    <button type="button" class="btn btn-primary">Sair</button>
 	</a>
 	<h1>Detalhes do Evento</h1>
-	<h2>Nome: {{object.name}}</h2>
-	participantes: {{ object.participantes }}
+	<h2>Nome:</h2> {{object.name}}
+	<br><h2>Participantes:</h2> {{ object.participantes }}
+	<br><h2>Bandas:</h2> {% for band in event.band.all %}{{ band }}<br/>{% endfor %}
+
+
 {% endblock %}

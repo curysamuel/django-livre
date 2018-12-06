@@ -3,10 +3,10 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
-class Event(models.Model):
+class Band(models.Model):
     name = models.CharField(max_length=200)
-    participantes = models.IntegerField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='autor')
+    estilo = models.CharField(max_length=200)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='autor_banda')
 
     def __str__(self):
         return self.name
@@ -14,10 +14,12 @@ class Event(models.Model):
     def get_absolute_url(self):
         return reverse('event_edit', kwargs={'pk': self.pk})
 
-class Band(models.Model):
+
+class Event(models.Model):
     name = models.CharField(max_length=200)
-    estilo = models.CharField(max_length=200)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='autor_banda')
+    participantes = models.IntegerField(null=True, blank=True)
+    band = models.ManyToManyField(Band, related_name='bandas')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='autor')
 
     def __str__(self):
         return self.name
